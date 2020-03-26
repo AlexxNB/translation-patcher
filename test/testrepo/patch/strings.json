@@ -1,0 +1,19 @@
+{
+    "src/main.js": {
+
+        "name: 'world'": 
+        "name: 'мир'",
+
+        "unexistent string":
+        "no matter"
+
+    },
+
+    "src/this_file_is_not_exists.svelte": {
+        "no matter":
+        "no matter"
+    },
+
+    "src/App.svelte": {
+    }
+}
