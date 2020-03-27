@@ -7,9 +7,7 @@ export default function(config){
     log.stage(`Start patching...`);
 
     log.info(`Replacing translated files`);
-    apply_files(config.patchdir, config.builddir,[
-        config.strings
-    ]);
+    apply_files('',config.patchdir, config.builddir,[config.strings]);
 
     log.info(`Replacing strings in files`);
     replace_strings_in_files(config.patchdir, config.builddir, config.strings);
@@ -17,28 +15,31 @@ export default function(config){
     log.stage(`Patching finished`);
 } 
 
-function apply_files(src_dir,dest_dir,skip=[],subdir=''){
-    const files = fs.readdirSync(path.join(src_dir,subdir));
+function apply_files(relative,patch_dir,build_dir,skip=[]){
+    const files = fs.readdirSync(path.join(patch_dir,relative));
 
     for (let file of files) {
-        const relative = path.join(subdir,file);
-        const src_path = path.join(src_dir,relative);
-        const dest_path = path.join(dest_dir,relative);
+        const relative_file = path.join(relative,file);
 
-        if(!skip.includes(relative)){
-
-            if(isdir(src_path))
-                apply_files(src_dir,dest_dir,skip,relative);
+        if(!skip.includes(relative_file)){
+            console.log(path.join(patch_dir,relative_file));
+            if(isdir(path.join(patch_dir,relative_file)))
+                apply_files(relative_file,patch_dir,build_dir,skip);
             else
-                replace_file(src_path,dest_path,relative);
+                replace_file(relative_file,patch_dir,build_dir);
 
         }
     }
 }
 
-function replace_file(src_path,dest_path,relative){
+export function replace_file(relative, patch_dir, build_dir){
+    const saved_path = path.join(build_dir,'__SAVED','__FILES',relative);
+    const src_path = path.join(patch_dir,relative);
+    const dest_path = path.join(build_dir,relative);
+
     const is_dest = fs.existsSync(dest_path);
 
+    if(is_dest && !fs.existsSync(saved_path)) fs.copySync(dest_path, saved_path);
     fs.copySync(src_path, dest_path);
 
     if(!is_dest)
@@ -52,7 +53,7 @@ function isdir(file_path){
 }
 
 function replace_strings_in_files(patch_dir,build_dir,srcfile){
-    const saved_dir = path.join(build_dir,'__SAVED');
+    const saved_dir = path.join(build_dir,'__SAVED','__STRINGS');
 
     const list = fs.readJSONSync(path.join(patch_dir,srcfile));
 
@@ -61,7 +62,7 @@ function replace_strings_in_files(patch_dir,build_dir,srcfile){
     }
 }
 
-function replace_in_file(build_dir,saved_dir,file,strings){
+export function replace_in_file(build_dir,saved_dir,file,strings){
     const dest_file = path.join(build_dir,file);
     const saved_file = path.join(saved_dir,file);
 
@@ -90,7 +91,19 @@ function replace_in_file(build_dir,saved_dir,file,strings){
             source = chanks.join(replace);
             log.ok(`String "${log.i(log.cut(find))}" replaced by "${log.i(log.cut(replace))}". ${num} entry(s).`,1);
         } else log.warn(`String "${log.i(log.cut(find))}" not found. Skipped.`,1); 
-}
+    }
     fs.writeFileSync(dest_file,source);
+}
+
+export function restore_file(build_dir,file,type='files'){
+    if(!['files','strings'].includes(type)) throw new Error('Type should be only "file" or "string"')
+
+    const src_path = path.join(build_dir,'__SAVED',type==='file'? '__FILES':'__STRINGS',file);
+    const dest_path = path.join(build_dir,file);
+
+    if(fs.existsSync(src_path)) {
+        fs.copyFileSync(src_path,dest_path);
+        log.ok(`Recovering file ${log.i(file)}`);
+    }
 }
 

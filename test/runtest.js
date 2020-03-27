@@ -14,13 +14,13 @@ console.log(trpatcher('download'));
 console.log("2. RUN trpatcher apply");
 console.log(trpatcher('apply'));
 
-*/
+
 console.log("3. RUN trpatcher install");
 console.log(trpatcher('install'));
-/*
+*/
 console.log("4. RUN trpatcher dev");
 console.log(trpatcher('dev'));
-
+/*
 
 waitOn({
     resources: ['http://localhost:5000/'],
