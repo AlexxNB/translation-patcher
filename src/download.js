@@ -1,10 +1,21 @@
+import log from './log';
+
 const fetchRepoDir = require('fetch-repo-dir');
+const fs = require('fs-extra');
 
 export default async function (config) {
-    console.log(`Downloading from ${config.repo}...`);
+    if(fs.existsSync(config.builddir)){
+        log.ok(`Deleting existent build folder...`);
+        fs.removeSync(config.builddir);
+    }
+
+    log.stage(`Started download from ${config.repo} repository`);
+    
     await fetchRepoDir({
         src: config.repo,
-        dir:'__BUILD'
+        dir:'__BUILD',
+        onDownloadStart: ()=>log.ok(`Downloading archive...`),
+        onUnpackStart: ()=>log.ok(`Unpacking archive...`)
     });
-    console.log(`Download completed...`);
+    log.stage(`Download completed...`);
 }

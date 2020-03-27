@@ -7,16 +7,21 @@ const DEV = process.env.MODE === 'dev';
 const TEST_DIR = path.join('test','testrepo');
 const BUILD_DIR = path.join(TEST_DIR,'__BUILD');
 
-// cleanup before test
-/*fs.removeSync(BUILD_DIR);
-
+/*
 console.log("1. RUN trpatcher download");
-console.log(trpatcher('download'));*/
+console.log(trpatcher('download'));
 
 console.log("2. RUN trpatcher apply");
 console.log(trpatcher('apply'));
 
+*/
+console.log("3. RUN trpatcher install");
+console.log(trpatcher('install'));
 /*
+console.log("4. RUN trpatcher dev");
+console.log(trpatcher('dev'));
+
+
 waitOn({
     resources: ['http://localhost:5000/'],
     delay: 1000,
