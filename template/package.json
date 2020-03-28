@@ -5,7 +5,7 @@
     "download": "trpatcher download",
     "apply": "trpatcher apply",
     "update": "trpatcher update",
-    "install": "trpatcher install",
+    "setup": "trpatcher setup",
     "dev": "trpatcher dev",
     "start": "trpatcher start",
     "build": "trpatcher build"

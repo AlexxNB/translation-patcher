@@ -3,7 +3,7 @@ import init from './init';
 import download from './download';
 import apply from './apply';
 import update from './update';
-import install from './install';
+import setup from './setup';
 import dev from './dev';
 import build from './build';
 import start from './start';
@@ -40,10 +40,10 @@ require('sade')('trpatcher')
         await update(loadconfig(opts.config));
     })
 
-    .command('install')
+    .command('setup')
     .describe('Install dependencies for the site')
     .action(async (opts) => {
-        await install(loadconfig(opts.config));
+        await setup(loadconfig(opts.config));
     })
 
     .command('dev')

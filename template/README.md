@@ -16,8 +16,8 @@ There are a lot of npm-scripts for your translation process.
 |-------|-----------|
 |`npm run download`| Will download the original site source from the repository into the `__BUILD` directory. If the `__BUILD` directory already exists, it will be erased.|
 |`npm run apply`|Apply the translation patch on original site sources.|
-|`npm run update`|Shortcut for `download`,`apply` and `install` scripts.|
-|`npm run install`| Run installation script of the site, specified in config file.|
+|`npm run update`|Shortcut for `download`,`apply` and `setup` scripts.|
+|`npm run setup`| Run installation script of the site, specified in config file.|
 |`npm run dev`| Run the site in the development mode by command, specified in config file. The `patch` directory will be watched and any changes will be applied on the site.|
 |`npm run build`| Run build script of the original site, specified in config file.|
 |`npm run start`| Run start script of the original site, specified in config file.|
@@ -31,7 +31,7 @@ In the working directory you can find the *translation.config.json* file which c
 {
     "lang": "ru",
     "repo": "https://github.com/sveltejs/template",
-    "install": "npm install",
+    "setup": "npm install",
     "dev": "npm run dev",
     "build": "npm run build",
     "start": "npm run start"
@@ -42,7 +42,7 @@ In the working directory you can find the *translation.config.json* file which c
 |-----|-----------|
 |lang | The language of the project. Just for information, doesn't uses anywhere in translation process.|
 |repo | Repository URL from the original site will be downloaded. You can also add subdirectory path: `https://github.com/author/somerepo/subdir/sitedir`. Repository can be on Github, Gitlub or Bitbucket.|
-|install | Command which will be run by `npm run  install` command.|
+|setup | Command which will be run by `npm run setup` command.|
 |dev | Command which will be run by `npm run dev` command.|
 |build | Command which will be run by `npm run build` command.|
 |start | Command which will be run by `npm run start` command.|
