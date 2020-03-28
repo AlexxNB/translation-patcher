@@ -14,6 +14,12 @@ require('sade')('trpatcher')
     .describe('Tool to fetch official Svelte site, apply translation patch and run translated site')
     .option('--config, -c', 'Config file','./translation.config.json')
 
+    .command('init')
+    .describe('Setup new directory for your translation project')
+    .action(async (opts) => {
+       // await download(loadconfig(opts.config));
+    })
+
     .command('download')
     .describe('Download official site content')
     .action(async (opts) => {
