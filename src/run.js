@@ -4,6 +4,7 @@ export default async function (command,cwd) {
     const commands = command.trim().split(' ');
     
     return await new Promise((resolve,reject)=>{
+
         const child = cp.spawn(commands.shift(), commands, {
             stdio: ['ignore', 'inherit', 'inherit'],
             shell: true,
@@ -11,16 +12,23 @@ export default async function (command,cwd) {
             cwd
         });
 
-        child.on('uncaughtException',err=>reject(err));
-        child.on('exit',()=>resolve(true));
+        child.on('exit',()=>resolve(0));
     
         process.on('uncaughtException',(err)=>{
-            process.kill(-child.pid) ;
+            kill_subprocess(child);
+            reject(err);
             throw err;
         })
     
         process.on('exit',()=>{
-            process.kill(-child.pid) ;
+            kill_subprocess(child);
+            resolve(0);
         })
+
     });
+}
+
+
+function kill_subprocess(subrocess){
+    if(subrocess.connected) process.kill(-subrocess.pid);
 }

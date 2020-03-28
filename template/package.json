@@ -2,7 +2,13 @@
   "name": "my-translated-site",
   "description": "RU translation of the site",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "download": "trpatcher download",
+    "apply": "trpatcher apply",
+    "update": "trpatcher update",
+    "install": "trpatcher install",
+    "dev": "trpatcher dev",
+    "start": "trpatcher start",
+    "build": "trpatcher build"
   },
   "dependencies": {
     "trpatcher": "^1.0.0"

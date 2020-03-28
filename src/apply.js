@@ -22,7 +22,7 @@ function apply_files(relative,patch_dir,build_dir,skip=[]){
         const relative_file = path.join(relative,file);
 
         if(!skip.includes(relative_file)){
-            console.log(path.join(patch_dir,relative_file));
+            
             if(isdir(path.join(patch_dir,relative_file)))
                 apply_files(relative_file,patch_dir,build_dir,skip);
             else

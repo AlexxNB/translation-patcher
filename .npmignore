@@ -2,3 +2,4 @@ src
 test
 cypress.json
 rollup.config.js
+template

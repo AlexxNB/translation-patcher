@@ -1,3 +1,5 @@
 node_modules
 __BUILD
 bin
+my_translated_site
+test_site
