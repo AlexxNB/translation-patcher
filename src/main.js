@@ -1,4 +1,5 @@
 import loadconfig from './loadconfig';
+import init from './init';
 import download from './download';
 import apply from './apply';
 import update from './update';
@@ -14,10 +15,10 @@ require('sade')('trpatcher')
     .describe('Tool to fetch official Svelte site, apply translation patch and run translated site')
     .option('--config, -c', 'Config file','./translation.config.json')
 
-    .command('init')
-    .describe('Setup new directory for your translation project')
-    .action(async (opts) => {
-       // await download(loadconfig(opts.config));
+    .command('init [directory]')
+    .describe('Setup new directory for your translation project.')
+    .action(async (dirname) => {
+        await init(dirname);
     })
 
     .command('download')
