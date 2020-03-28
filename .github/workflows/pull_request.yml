@@ -1,0 +1,17 @@
+name: Test PR
+
+on: pull_request   
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Installing NPM deps
+        run: npm install
+      - name: Testing
+        run: npm run test
