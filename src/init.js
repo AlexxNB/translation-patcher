@@ -6,7 +6,7 @@ const TEMPLATE = 'https://github.com/AlexxNB/translation-patcher/template'
 const fetchRepoDir = require('fetch-repo-dir');
 const prompts = require('prompts');
 
-export default async function(dirname){
+export default async function(dirname,noinstall){
 
     if(!dirname){
         dirname = (await prompts({
@@ -24,9 +24,12 @@ export default async function(dirname){
     });
     log.stage(`Done!`);
 
-    log.stage(`Installing dependencies...`);
-    await run('npm install',dirname);
-    log.stage(`Done!`);
+    if(!noinstall){
+        log.stage(`Installing dependencies...`);
+        await run('npm install',dirname);
+        log.stage(`Done!`);
+    }
+
     log.info(``);
-    log.ok(`Please read the ${log.i(README.md)} file in your project folder for next steps.`);
+    log.ok(`Please read the ${log.i('README.md')} file in your project folder for next steps.`);
 }

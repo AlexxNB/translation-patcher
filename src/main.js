@@ -17,8 +17,9 @@ require('sade')('trpatcher')
 
     .command('init [directory]')
     .describe('Setup new directory for your translation project.')
-    .action(async (dirname) => {
-        await init(dirname);
+    .option('--noinstall, -n', 'Do not run "npm install"')
+    .action(async (dirname,opts) => {
+        await init(dirname,opts.n);
     })
 
     .command('download')
