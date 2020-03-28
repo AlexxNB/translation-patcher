@@ -1,6 +1,6 @@
 {
   "name": "trpatcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tool to fetch official Svelte site, apply translation patch and run translated site ",
   "main": "bin/patcher.js",
   "bin": {
