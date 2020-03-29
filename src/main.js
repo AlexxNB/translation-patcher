@@ -34,10 +34,16 @@ require('sade')('trpatcher')
         await apply(loadconfig(opts.config));
     })
 
-    .command('update')
-    .describe('Download official site content and apply translation patch')
+    .command('das')
+    .describe('Shortcut for download,apply and setup commands')
     .action(async (opts) => {
-        await update(loadconfig(opts.config));
+        await update(loadconfig(opts.config),'das');
+    })
+
+    .command('dsa')
+    .describe('Shortcut for download,setup and apply commands')
+    .action(async (opts) => {
+        await update(loadconfig(opts.config),'dsa');
     })
 
     .command('setup')
