@@ -1,8 +1,13 @@
 # SITE TRANSLATION
 
-This is example template for the site translation project.
+This is example template for the site translation project. Formaly it is just example of [Svelte site template](https://github.com/sveltejs/template) translation.
 
-Run the `npm run update` and example site's sources will be downloaded. Formaly it is just [Svelte site template](https://github.com/sveltejs/template).
+Run the `npm run das` command. It will cause next steps:
+
+* example site's sources will be downloaded
+* source files will be replaced by translated ones from `patch` directory
+* dependencies will be installed
+
 
 Then run `npm run dev` and the translated site will be started in development mode. Default URL for Svelte template is [localhost:5000](http://localhost:5000). Open it in the browser, then edit something in the `patch` directory and site will be updated automaticly.
 
@@ -16,8 +21,9 @@ There are a lot of npm-scripts for your translation process.
 |-------|-----------|
 |`npm run download`| Will download the original site source from the repository into the `__BUILD` directory. If the `__BUILD` directory already exists, it will be erased.|
 |`npm run apply`|Apply the translation patch on original site sources.|
-|`npm run update`|Shortcut for `download`,`apply` and `setup` scripts.|
 |`npm run setup`| Run installation script of the site, specified in config file.|
+|`npm run das`| Shortcut for `download`,`apply` and `setup` scripts.|
+|`npm run dsa`| Shortcut for `download`,`setup` and `apply` scripts.|
 |`npm run dev`| Run the site in the development mode by command, specified in config file. The `patch` directory will be watched and any changes will be applied on the site.|
 |`npm run build`| Run build script of the original site, specified in config file.|
 |`npm run start`| Run start script of the original site, specified in config file.|
