@@ -1,10 +1,11 @@
 {
   "name": "my-translated-site",
-  "description": "RU translation of the site",
+  "description": "My translation of the site",
   "scripts": {
     "download": "trpatcher download",
     "apply": "trpatcher apply",
-    "update": "trpatcher update",
+    "dsa": "trpatcher dsa",
+    "das": "trpatcher das",
     "setup": "trpatcher setup",
     "dev": "trpatcher dev",
     "start": "trpatcher start",
