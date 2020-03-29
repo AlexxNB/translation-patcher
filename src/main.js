@@ -34,18 +34,6 @@ require('sade')('trpatcher')
         await apply(loadconfig(opts.config));
     })
 
-    .command('das')
-    .describe('Shortcut for download,apply and setup commands')
-    .action(async (opts) => {
-        await update(loadconfig(opts.config),'das');
-    })
-
-    .command('dsa')
-    .describe('Shortcut for download,setup and apply commands')
-    .action(async (opts) => {
-        await update(loadconfig(opts.config),'dsa');
-    })
-
     .command('setup')
     .describe('Install dependencies for the site')
     .action(async (opts) => {

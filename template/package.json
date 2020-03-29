@@ -4,8 +4,8 @@
   "scripts": {
     "download": "trpatcher download",
     "apply": "trpatcher apply",
-    "dsa": "trpatcher dsa",
-    "das": "trpatcher das",
+    "dsa": "trpatcher download && trpatcher setup && trpatcher apply",
+    "das": "trpatcher download && trpatcher apply && trpatcher setup",
     "setup": "trpatcher setup",
     "dev": "trpatcher dev",
     "start": "trpatcher start",
