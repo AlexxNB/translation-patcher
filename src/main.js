@@ -2,7 +2,6 @@ import loadconfig from './loadconfig';
 import init from './init';
 import download from './download';
 import apply from './apply';
-import update from './update';
 import setup from './setup';
 import dev from './dev';
 import build from './build';
