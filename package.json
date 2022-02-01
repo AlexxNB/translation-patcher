@@ -10,7 +10,7 @@
     "build": "node esbuild",
     "prepublish": "npm run build",
     "pretest": "npm run build",
-    "test": "node test/run | tap-diff",
+    "test": "node test/run",
     "trpatcher": "export MODE=dev && npm run build && node --unhandled-rejections=strict --enable-source-maps bin/patcher.js"
   },
   "repository": {
@@ -24,11 +24,9 @@
   },
   "homepage": "https://github.com/AlexxNB/translation-patcher#readme",
   "devDependencies": {
-    "diff": "^4.0.1",
     "esbuild": "^0.14.16",
     "esbuild-plugin-replace": "^1.2.0",
-    "tap-diff": "^0.1.1",
-    "tape": "^4.13.2"
+    "uvu": "^0.5.3"
   },
   "dependencies": {
     "ansi-colors": "^4.1.1",
