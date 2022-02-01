@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "ansi-colors": "^4.1.1",
-    "fetch-repo-dir": "^1.0.4",
-    "fs-extra": "^9.0.0",
-    "node-watch": "^0.6.3",
-    "prompts": "^2.3.2",
-    "sade": "^1.7.3"
+    "fetch-repo-dir": "^1.0.6",
+    "fs-extra": "^10.0.0",
+    "node-watch": "^0.7.3",
+    "prompts": "^2.4.2",
+    "sade": "^1.8.1"
   }
 }
