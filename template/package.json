@@ -12,6 +12,6 @@
     "build": "trpatcher build"
   },
   "dependencies": {
-    "trpatcher": "^1.0.5"
+    "trpatcher": "1.x"
   }
 }
